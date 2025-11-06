@@ -1,0 +1,25 @@
+class ErrorSuma(Exception):
+    pass
+
+def mayor_suma(lista: list) -> int:
+    if len(lista) < 2:
+        return None
+    mayor_sum = lista[0] + lista[1]
+    for i in range(len(lista) - 1):
+        suma_actual = lista[i] + lista[i + 1]
+        if suma_actual > mayor_sum:
+            mayor_sum = suma_actual
+    return mayor_sum
+
+if __name__ == "__main__":
+    try:
+       lista_numeros = input("Ingrese los números separados por comas: ").split(',')
+       lista_numeros = [int(num.strip()) for num in lista_numeros]
+       resultado = mayor_suma(lista_numeros)
+       if resultado is not None:
+           print(f"La mayor suma de dos números consecutivos es: {resultado}")
+    except ErrorSuma as e:
+        print(f"La lista debe contener al menos dos números. {e}")
+    except ValueError as ve:
+        print(f"ingrese solo números enteros separados por comas. {ve}")
+
