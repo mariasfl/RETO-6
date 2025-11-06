@@ -1,0 +1,33 @@
+def es_palindromo():
+    try:
+        word = str(input("Enter one word: "))
+
+        if not word:
+            raise ValueError("no word was entered.")
+        if not word is not str:
+            raise ValueError("just enter letters, no spaces or numbers.")
+
+        word = word.lower()
+        izquierda = 0
+        derecha = len(word) - 1
+
+        while izquierda < derecha:
+            if word[izquierda] != word[derecha]:
+                print("No es palíndromo")
+                return False
+            izquierda += 1
+            derecha -= 1
+
+        print("Es palíndromo")
+        return True
+
+    except ValueError as ve:
+        print(f"Error de valor: {ve}")
+        return None
+    except Exception as e:
+        print(f"Ocurrió un error inesperado: {e}")
+        return None
+
+
+if __name__ == "__main__":
+    es_palindromo()
