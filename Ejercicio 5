@@ -1,0 +1,27 @@
+class AnagramaError(Exception):
+    pass
+
+def mismos_caracteres(lista: list[str]) -> list[str]:
+    resultado = []
+    for i in range(len(lista)):
+        for j in range(i + 1, len(lista)):
+            if sorted(lista[i]) == sorted(lista[j]):
+                if lista[i] not in resultado:
+                    resultado.append(lista[i])
+                if lista[j] not in resultado:
+                    resultado.append(lista[j])
+    return resultado
+
+if __name__ == "__main__":
+    try:
+        lista_entrada = input("Ingrese las palabras separadas por comas: ").split(',')
+        lista_entrada = [palabra.strip() for palabra in lista_entrada]
+        if len(lista_entrada) < 2:
+            raise AnagramaError("Debe ingresar al menos dos palabras.")
+        resultado = mismos_caracteres(lista_entrada)
+        if resultado:
+            print(resultado)
+        else:
+            raise AnagramaError("No hay palabras con los mismos caracteres.")
+    except AnagramaError as error:
+        print(error)
