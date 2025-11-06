@@ -1,0 +1,37 @@
+import __main__
+
+def basic_calculator():
+        print("---BASIC CALCULATOR---")
+        print("Enter Two numbers and the operation symbol (+,-,*,/)")
+
+def calcular(num1, num2, sign):        
+    if sign == '+':
+        return num1 + num2
+    elif sign == '-':
+        return num1 - num2        
+    elif sign == '*':
+        return num1 * num2
+    elif sign == '/':
+        return num1 / num2
+
+def main():
+    try:
+        num1 = float(input("Primer número: "))
+        sign = str(input("Operador (+ - * /): "))
+        num2 = float(input("Segundo número: "))
+        resultado = calcular(num1, num2, sign)
+    except ValueError as ve:
+        print(f"ingrese un número int o float {ve}")
+    except TypeError as te:
+        print(f"ingrese un operador válido {te}")
+    except ZeroDivisionError as zde:
+        print(f"ingrese un numero diferente a cero para dividir {zde}")
+    except Exception as e:
+        print(f"Ocurrió un error inesperado: {e}")
+    else:
+        print(f"Resultado: {resultado}")
+if __name__ == "__main__":
+    basic_calculator()
+    main()
+if __name__ == "__main__":
+    resultado =  calcular()
